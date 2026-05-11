@@ -75,7 +75,7 @@ These scripts support evidence collection and control validation for the followi
 
 
 
-Keith A. Oqueli | Security Operations Manager, GRC
+Keith Oquelí | Security Operations Manager, GRC
 
 
 
