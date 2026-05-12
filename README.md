@@ -15,19 +15,16 @@ These scripts are derived from real world security operations work and are inten
 
 
 \## Repository Structure
+
 endpoint-security-scripts/
-
 ├── ai-tooling/
-
 │   └── detect-gemini-nano/     # Detect silently installed AI model weights on managed endpoints
-
 ├── browser-security/           # Browser configuration and policy detection scripts
-
+├── supply-chain/
+│   └── axios-rat-compromise/   # axios npm supply chain compromise RAT detection
 └── mdm-deployment/
-
-├── jumpcloud/              # JumpCloud custom command deployment guidance
-
-└── jamf/                   # JAMF policy deployment guidance
+    ├── jumpcloud/              # JumpCloud custom command deployment guidance
+    └── jamf/                   # JAMF policy deployment guidance
 
 ---
 
@@ -72,10 +69,7 @@ These scripts support evidence collection and control validation for the followi
 
 
 \## Author
-
-
-
-Keith Oquelí | Security | Resilience | GRC
+Keith Oquelí 
 
 
 
