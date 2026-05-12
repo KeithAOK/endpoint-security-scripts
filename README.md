@@ -55,13 +55,13 @@ These scripts support evidence collection and control validation for the followi
 
 
 
-\- \*\*SOC 2 Type II\*\* - CC6.1, CC6.8, CC7.1
+\- **SOC 2 Type II** - CC6.1, CC6.8, CC7.1
 
-\- \*\*PCI DSS v4.0.1\*\* - Requirement 5.1, 6.3, 11.5
+\- **PCI DSS v4.0.1** - Requirement 5.1, 6.3, 11.5
 
-\- \*\*NIST CSF\*\* - DE.CM: Continuous monitoring of endpoints
+\- **NIST CSF** - DE.CM: Continuous monitoring of endpoints
 
-\- \*\*ISO 27001\*\* - A.12.6, A.14.2: Vulnerability management and secure development
+\- **ISO 27001** - A.12.6, A.14.2: Vulnerability management and secure development
 
 
 
