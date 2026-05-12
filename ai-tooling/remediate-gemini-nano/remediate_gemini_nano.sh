@@ -1,58 +1,47 @@
-#!/bin/bash
-# remediate_gemini_nano.sh
-# Removes Google Chrome Gemini Nano model weights and applies persistent policy
-# to prevent re-download on macOS managed endpoints
-# Deploy via JumpCloud Custom Command, Run As: root
+# remediate_gemini_nano.ps1
+# Removes Google Chrome Gemini Nano model weights and applies persistent registry policy
+# to prevent re-download on Windows managed endpoints
+# Deploy via JumpCloud Custom Command, run as SYSTEM
 #
 # Author: Keith Oquelí
 # Version: 1.0 | May 2026
-
-cd /Users/Shared
-sleep 1
-
-localuser=$(scutil <<< "show State:/Users/ConsoleUser" | awk '/Name :/ && ! /loginwindow/ { print $3 }')
-
-if [ -z "${localuser}" ]; then
-    echo "No user is currently logged in."
-    exit 1
-fi
-
-TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
-HOSTNAME=$(hostname)
-
-echo "============================================"
-echo "Gemini Nano Remediation Script"
-echo "Timestamp: $TIMESTAMP"
-echo "Hostname:  $HOSTNAME"
-echo "User:      $localuser"
-echo "============================================"
-
+$Timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+$Hostname = $env:COMPUTERNAME
+$LoggedInUser = (Get-WMIObject -class Win32_ComputerSystem | Select-Object -ExpandProperty UserName).Split('\')[1]
+Write-Output "============================================"
+Write-Output "Gemini Nano Remediation Script"
+Write-Output "Timestamp: $Timestamp"
+Write-Output "Hostname:  $Hostname"
+Write-Output "User:      $LoggedInUser"
+Write-Output "============================================"
 # Find and remove weights.bin
-MODEL_PATH=$(find "/Users/$localuser/Library/Application Support/Google/Chrome/OptGuideOnDeviceModel" -name "weights.bin" 2>/dev/null | head -1)
-
-if [ -n "$MODEL_PATH" ]; then
-    VERSION_DIR=$(dirname "$MODEL_PATH")
-    rm -rf "$VERSION_DIR"
-    echo "REMEDIATED: Removed $MODEL_PATH"
-else
-    echo "NOT FOUND: Gemini Nano weights.bin not present on this endpoint"
-    echo "No file removal required"
-fi
-
-# Apply persistent Chrome policy to prevent re-download
-PLIST_DIR="/Library/Managed Preferences"
-PLIST_FILE="$PLIST_DIR/com.google.Chrome.plist"
-
-if [ ! -d "$PLIST_DIR" ]; then
-    mkdir -p "$PLIST_DIR"
-fi
-
-/usr/bin/defaults write "$PLIST_FILE" GenAILocalFoundationalModelSettings -int 1
-/usr/bin/defaults write "$PLIST_FILE" OnDeviceModelEnabled -bool false
-
-echo "POLICY:     Chrome managed preference profile applied"
-echo "POLICY:     GenAILocalFoundationalModelSettings set to 1"
-echo "POLICY:     OnDeviceModelEnabled set to false"
-echo "============================================"
-echo "Remediation complete. Chrome restart required to apply policy."
+$ModelPath = Get-ChildItem -Path "C:\Users\$LoggedInUser\AppData\Local\Google\Chrome\User Data\OptGuideOnDeviceModel" -Recurse -Filter "weights.bin" -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty FullName
+if ($ModelPath) {
+    $VersionDir = Split-Path $ModelPath -Parent
+    Remove-Item -Path $VersionDir -Recurse -Force -ErrorAction SilentlyContinue
+    Write-Output "REMEDIATED: Removed $ModelPath"
+} else {
+    Write-Output "NOT FOUND: Gemini Nano weights.bin not present on this endpoint"
+    Write-Output "No file removal required"
+}
+# Apply persistent Chrome registry policy to prevent re-download
+$RegistryPath = "HKLM:\SOFTWARE\Policies\Google\Chrome"
+$RegSuccess = $true
+try {
+    if (-not (Test-Path $RegistryPath)) {
+        New-Item -Path $RegistryPath -Force | Out-Null
+    }
+    Set-ItemProperty -Path $RegistryPath -Name "GenAILocalFoundationalModelSettings" -Value 1 -Type DWord -Force
+    Set-ItemProperty -Path $RegistryPath -Name "OnDeviceModelEnabled" -Value 0 -Type DWord -Force
+} catch {
+    $RegSuccess = $false
+    Write-Output "ERROR: Failed to apply registry policy. Run as administrator or deploy via JumpCloud as SYSTEM."
+}
+if ($RegSuccess) {
+    Write-Output "POLICY:     Chrome registry policy applied"
+    Write-Output "POLICY:     GenAILocalFoundationalModelSettings set to 1"
+    Write-Output "POLICY:     OnDeviceModelEnabled set to 0"
+}
+Write-Output "============================================"
+Write-Output "Remediation complete. Chrome restart required to apply policy."
 exit 0
