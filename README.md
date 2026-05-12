@@ -6,7 +6,7 @@ A collection of endpoint security detection and remediation scripts for use in e
 
 
 
-These scripts are derived from real-world security operations work and are intended to support security practitioners, IT administrators, and GRC professionals in maintaining visibility and control over managed endpoints.
+These scripts are derived from real world security operations work and are intended to support security practitioners, IT administrators, and GRC professionals in maintaining visibility and control over managed endpoints.
 
 
 
@@ -75,7 +75,7 @@ These scripts support evidence collection and control validation for the followi
 
 
 
-Keith Oquelí | Security Operations Manager, GRC
+Keith Oquelí | Security | Resilience | GRC
 
 
 
