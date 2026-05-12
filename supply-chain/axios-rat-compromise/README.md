@@ -1,4 +1,6 @@
-\## Origin This repository content was derived from an internal security advisory issued by Second Nature Security Operations on April 1, 2026 in response to the axios supply chain compromise detected on March 31, 2026. Scripts and detection logic have been sanitized and generalized for public use.
+\## Origin 
+
+This repository content was derived from an internal security advisory issued by Second Nature Security Operations on April 1, 2026 in response to the axios supply chain compromise detected on March 31, 2026. Scripts and detection logic have been sanitized and generalized for public use.
 
 
 
