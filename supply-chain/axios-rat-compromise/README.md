@@ -36,11 +36,11 @@ Detection covers three areas:
 
 
 
-1\. \*\*Compromised axios versions\*\* - Checks global npm packages and common project directories for axios v1.14.1 and v0.30.4
+1\. **Compromised axios versions** - Checks global npm packages and common project directories for axios v1.14.1 and v0.30.4
 
-2\. \*\*RAT artifacts\*\* - Checks for known platform-specific RAT artifacts left by the malicious payload
+2\. **RAT artifacts** - Checks for known platform-specific RAT artifacts left by the malicious payload
 
-3\. \*\*Malicious dependency\*\* - Checks for the presence of plain-crypto-js, the trojanized dependency used to deliver the RAT
+3\. **Malicious dependency** - Checks for the presence of plain-crypto-js, the trojanized dependency used to deliver the RAT
 
 
 
