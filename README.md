@@ -37,11 +37,11 @@ endpoint-security-scripts/
 
 
 
-Each script directory contains a README.md with context, compliance relevance, and deployment instructions, along with platform-specific scripts (.sh for macOS/Linux, .ps1 for Windows).
+Each script directory contains a README.md with context, compliance relevance, and deployment instructions, along with platform specific scripts (.sh for macOS/Linux, .ps1 for Windows).
 
 
 
-Scripts are designed to be run via MDM custom command deployment against managed device fleets. Output is captured in the MDM console for review.
+Scripts are designed to be run via MDM custom command deployment, against managed device fleets. Output is captured in the MDM console for review.
 
 
 
