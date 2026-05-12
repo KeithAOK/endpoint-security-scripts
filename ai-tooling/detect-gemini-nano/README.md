@@ -10,7 +10,7 @@ Detects the presence of Google Chrome's silently installed Gemini Nano AI model 
 
 
 
-Beginning in approximately April 2026, Google Chrome began silently downloading a 4GB AI model called Gemini Nano to eligible user devices without an explicit consent prompt. The model weights are stored as a file called weights.bin inside a directory called OptGuideOnDeviceModel within the Chrome user profile.
+Beginning approximately April 20, 2026, Google Chrome began silently downloading a 4GB AI model called Gemini Nano to eligible user devices without an explicit consent prompt. The model weights are stored as a file called weights.bin inside a directory called OptGuideOnDeviceModel within the Chrome user profile.
 
 
 
@@ -73,16 +73,14 @@ Deploy via JumpCloud Custom Command. See mdm-deployment/jumpcloud/README.md for 
 
 
 If present:
-
+```
 FOUND: Gemini Nano weights.bin detected on HOSTNAME
-
-Path: \[file path]
-
-Size: \[file size]
-
-
+Path: [file path]
+Size: [file size]
+```
 
 If not present:
-
+```
 NOT FOUND: Gemini Nano weights.bin not present on HOSTNAME
+```
 
