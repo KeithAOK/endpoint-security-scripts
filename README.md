@@ -16,6 +16,7 @@ These scripts are derived from real world security operations work and are inten
 
 \## Repository Structure
 
+```
 endpoint-security-scripts/
 ├── ai-tooling/
 │   └── detect-gemini-nano/     # Detect silently installed AI model weights on managed endpoints
@@ -25,7 +26,7 @@ endpoint-security-scripts/
 └── mdm-deployment/
     ├── jumpcloud/              # JumpCloud custom command deployment guidance
     └── jamf/                   # JAMF policy deployment guidance
-
+```
 ---
 
 
