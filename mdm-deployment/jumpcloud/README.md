@@ -46,7 +46,7 @@ Guidance for deploying endpoint-security-scripts via JumpCloud Custom Commands.
 
 
 
-After execution navigate to Device Management, Commands, then Results to view per device output. Click View Details next to each command to see the \*\*\****stdout\*\*\****, \*\*\****stderr\*\*\****, and \*\*\****exit code\*\*\**** for each device.
+After execution navigate to Device Management, Commands, then Results to view per device output. Click View Details next to each command to see the \*\*\**stdout\*\*\**, \*\*\**stderr\*\*\**, and \*\*\**exit code\*\*\** for each device.
 
 
 
